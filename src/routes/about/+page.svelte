@@ -65,6 +65,17 @@
 			icon: mysql
 		}
 	];
+
+	//creating function that checks if the element is in view
+	function isElementInViewport(el: { getBoundingClientRect: () => any }) {
+		var rect = el.getBoundingClientRect();
+		return (
+			rect.top >= 0 &&
+			rect.left >= 0 &&
+			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		);
+	}
 </script>
 
 <main class=" font-sans leading-normal tracking-normal">
@@ -117,10 +128,11 @@
 						<Card class="flex flex-col items-center justify-center space-y-4 p-4 transition">
 							<img class="h-16 w-16" src={icon} alt={name} />
 							<CardTitle class="text-center">{name}</CardTitle>
-							<CardContent class="flex flex-row items-center justify-center space-x-1">
+							<CardContent class="flex flex-row flex-wrap items-center justify-center space-x-1">
 								<CardDescription class="text-center">Proficiency</CardDescription>
 								{#each Array(level).fill(0) as _, i (i)}
-									<Star class="h-6 w-6 text-primary" />
+									<!-- responsive stars that asjust size based on screen size -->
+									<Star class="h-4 w-4 md:h-6 md:w-6" fill="currentColor" />
 								{/each}
 							</CardContent>
 						</Card>
@@ -149,29 +161,31 @@
 					<div class="relative">
 						<div class="absolute left-0 top-0 h-full w-1 bg-muted-foreground"></div>
 						<div class="flex flex-col space-y-12 md:space-y-24">
-							<div class="flex items-start space-x-4">
-								<div class="relative">
-									<!-- circle stoppoint  -->
-									<div
-										class="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 transform rounded-full bg-primary"
-									></div>
-								</div>
-								<Card
-									class="flex-grow overflow-hidden rounded-lg border text-card-foreground shadow-lg dark:bg-slate-800"
-									data-v0-t="card"
-								>
-									<div class="flex flex-col space-y-1.5 p-6">
-										<img src={nextjs} alt="something" class="h-20 w-20" />
+							{#each tooling as { name, description, icon }, i (i)}
+								<div class="flex items-start space-x-4">
+									<div class="relative">
+										<!-- circle stoppoint  -->
+										<div
+											class="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 transform rounded-full bg-primary"
+										></div>
 									</div>
-									<CardContent class="p-6">
-										<CardTitle class="whitespace-nowrap text-2xl font-bold">NextJs</CardTitle>
-										<CardDescription class="text-sm text-muted-foreground">
-											A JavaScript library for building user interfaces.
-										</CardDescription>
-									</CardContent>
-								</Card>
-							</div>
-							<!-- cut off point  -->
+									<Card
+										class="max-w-[30rem] flex-grow overflow-hidden rounded-lg border text-card-foreground shadow-lg dark:bg-slate-800"
+										data-v0-t="card"
+									>
+										<div class="flex flex-col space-y-1.5 p-6">
+											<img src={icon} alt="something" class="h-20 w-20" />
+										</div>
+										<CardContent class="p-6">
+											<CardTitle class="whitespace-nowrap text-2xl font-bold">{name}</CardTitle>
+											<CardDescription class="text-sm text-muted-foreground">
+												{description}
+											</CardDescription>
+										</CardContent>
+									</Card>
+								</div>
+								<!-- cut off point  -->
+							{/each}
 						</div>
 					</div>
 				</div>
