@@ -3,6 +3,8 @@
 	import Button from './ui/button/button.svelte';
 	import { toggleMode, mode } from 'mode-watcher';
 	import { onMount } from 'svelte';
+	import jjLogo from '$lib/static/jjLogo.png';
+	import { fly } from 'svelte/transition';
 
 	// Reactive statement to return t or f based on current mode
 	let isDarkMode: boolean;
@@ -28,7 +30,21 @@
 >
 	<!-- logo -->
 	<a href="/" class="flex items-center justify-center">
-		<span class="ml-2 text-xl font-bold">Jaylon Carrington</span>
+		{#if isDarkMode}
+			<img
+				class="h-20 w-20 rounded-full invert"
+				src={jjLogo}
+				alt="logo"
+				in:fly={{ x: -100, delay: 500, duration: 1000 }}
+			/>
+		{:else}
+			<img
+				class="h-20 w-20 rounded-full"
+				src={jjLogo}
+				alt="logo"
+				in:fly={{ x: -100, delay: 500, duration: 1000 }}
+			/>
+		{/if}
 	</a>
 	<Button on:click={toggleMode} variant="outline" size="icon">
 		{#if isDarkMode}

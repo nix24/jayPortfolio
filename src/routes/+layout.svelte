@@ -18,6 +18,21 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Jaylon Carrington Portfolio</title>
+	<meta
+		name="description"
+		content="I am a student software enginneering major with a strong passion to create stunning projects!"
+	/>
+	<meta
+		name="keywords"
+		content="technology, student, college, uncc, software development, portfolio, projects, web development, Jaylon Carrington"
+	/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- icon -->
+	<link rel="icon" href="/favicon.ico" />
+</svelte:head>
+
 <ModeWatcher />
 <NavBar />
 <slot />
