@@ -22,7 +22,7 @@
 	<title>Jaylon Carrington Portfolio</title>
 	<meta
 		name="description"
-		content="I am a student software enginneering major with a strong passion to create stunning projects!"
+		content="I am a student software engineering major with a strong passion to create stunning projects!"
 	/>
 	<meta
 		name="keywords"
