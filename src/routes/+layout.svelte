@@ -4,6 +4,7 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { onNavigate } from '$app/navigation';
 	import About from '$lib/components/About.svelte';
+	import { onMount } from 'svelte';
 
 	onNavigate((navigation) => {
 		// Add type assertion to let TypeScript know that `document` has the `startViewTransition` property

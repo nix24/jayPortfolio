@@ -10,8 +10,22 @@
 	const searchQuery = writable('');
 
 	const selectedTags = writable(new Set<string>(['All']));
-	const tags = ['All', 'Javascript', 'Python', 'Rust', 'C++'];
+	const tags = ['All', 'TypeScript', 'Python', 'Rust', 'C++', 'Java'];
 	const projects = [
+		{
+			title: 'Project C',
+			img: 'https://placehold.co/600x400',
+			description: 'A data analysis tool',
+			tags: ['C++'],
+			githubLink: 'https://github.com/project-c'
+		},
+		{
+			title: 'Project C',
+			img: 'https://placehold.co/600x400',
+			description: 'A data analysis tool',
+			tags: ['C++'],
+			githubLink: 'https://github.com/project-c'
+		},
 		{
 			title: 'Project C',
 			img: 'https://placehold.co/600x400',
@@ -48,17 +62,15 @@
 </script>
 
 <main>
-	<div class="container mx-auto px-4 py-8">
+	<div class="container mx-auto py-8">
 		<h1 class="mb-6 text-5xl font-bold">Projects</h1>
-		<div class="mb-4 flex items-center">
+		<div class="relative mb-4 flex items-center">
 			<Input
 				bind:value={$searchQuery}
-				class="mr-2 flex-1"
+				class="mr-2 flex-1 rounded-md border-2"
 				placeholder="Search projects by language, technology, or name"
 			/>
-			<Button variant="outline">
-				<SearchIcon class="text-2xl" />
-			</Button>
+			<SearchIcon class="absolute right-5 top-5 -translate-y-1/2 transform text-2xl" />
 		</div>
 		<div class="mb-4">
 			<span class="mr-2 text-sm font-medium">Tags</span>
@@ -78,9 +90,9 @@
 			{/each}
 		</div>
 		<hr class="mb-6" />
-		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<div class=" grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 			{#each $filteredProjects as projects}
-				<Card class="w-full">
+				<Card class="w-80 lg:w-full">
 					<img
 						alt="Project C"
 						class="h-48 w-full rounded-t-lg object-cover"

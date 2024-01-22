@@ -1,6 +1,6 @@
 <script lang="ts">
 	import c from '$lib/static/c.svg';
-	import Javascript from '$lib/static/javascript.svg';
+	import java from '$lib/static/java.svg';
 	import typescript from '$lib/static/typescript.svg';
 	import python from '$lib/static/python.svg';
 	import rust from '$lib/static/rust.svg';
@@ -15,7 +15,7 @@
 	import { CardTitle, CardContent, Card, CardDescription } from '$lib/components/ui/card';
 	import { Star } from 'lucide-svelte';
 
-	import placeholder from '$lib/static/guy_placeholder.webp';
+	import jSelfie2 from '$lib/static/jaySelfie2.webp';
 	import { onMount } from 'svelte';
 	import { fly, scale } from 'svelte/transition';
 
@@ -29,7 +29,7 @@
 	let skills = [
 		'Adaptable',
 		'Problem-Solver',
-		'Strong-Fundementals',
+		'Strong-Fundamentals',
 		'Team-Leader',
 		'Efficient',
 		'Fast-Learner'
@@ -37,7 +37,7 @@
 
 	let languages = [
 		{ name: 'Typescript', icon: typescript, level: 5 },
-		{ name: 'Javascript', icon: Javascript, level: 5 },
+		{ name: 'Java', icon: java, level: 4 },
 		{ name: 'Python', icon: python, level: 4 },
 		{ name: 'C++', icon: c, level: 3 },
 		{ name: 'Rust', icon: rust, level: 3 }
@@ -66,31 +66,23 @@
 		}
 	];
 
-	//creating function that checks if the element is in view
-	function isElementInViewport(el: { getBoundingClientRect: () => any }) {
-		var rect = el.getBoundingClientRect();
-		return (
-			rect.top >= 0 &&
-			rect.left >= 0 &&
-			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-		);
-	}
+	//breakpoint: 1760, 1998, 2291, 2590
 </script>
 
 <main class=" font-sans leading-normal tracking-normal">
 	<div class="container mx-auto my-10 p-8">
 		<div class="grid grid-cols-1 md:grid-cols-12">
 			<div class="p-6 md:col-span-7">
-				<h1 class="mb-4 text-6xl font-bold">So Who am I Anyways?</h1>
+				<h1 class="mb-4 text-6xl font-bold">So who am I anyways?</h1>
 
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia obcaecati vitae est eos
 					quam corporis harum molestiae laudantium! Debitis, beatae? Sint eius vitae minima!
 					Reiciendis aliquid in ab facilis corrupti?
 				</p>
+				<hr class="mx-20 my-6 border-2" />
 
-				<div class="mb-6">
+				<section class="mb-5">
 					<h2 class="my-6 text-2xl font-semibold">Key Skills</h2>
 					<!-- using badges to list out, Adaptable, problem-Solver, Strong-Fundementals, Team-Leader, Efficient, Fast-Learner -->
 					<div class="container grid grid-cols-2 gap-4 md:grid-cols-3">
@@ -109,20 +101,29 @@
 							{/if}
 						{/each}
 					</div>
-				</div>
+				</section>
 			</div>
 			<div class="p-6 md:col-span-5">
 				<img
 					in:fly={{ y: 1000, delay: 500, duration: 1000 }}
 					class="rounded-lg"
-					src={placeholder}
+					src={jSelfie2}
 					alt="guy_placeholder"
 				/>
 			</div>
 			<!-- langauges. level is determined by circles with a bg-primary color  -->
 			<!-- modern and clean design but creative in showing off my skills -->
+			<hr class="mx-20 my-6 border-2" />
+
 			<section class="p-6 md:col-span-10">
-				<h2 class="mb-2 text-2xl font-semibold">Languages</h2>
+				<div class="mb-5 space-y-2">
+					<h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Languages</h2>
+					<p
+						class="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+					>
+						I am proficient in these languages
+					</p>
+				</div>
 				<div class="container grid grid-cols-2 gap-4 md:grid-cols-3">
 					{#each languages as { name, icon, level }, i (i)}
 						<Card class="flex flex-col items-center justify-center space-y-4 p-4 transition">
@@ -145,15 +146,11 @@
 			<div class="container px-4 md:px-6">
 				<div class="flex flex-col items-center justify-center space-y-4 text-center">
 					<div class="space-y-2">
-						<h2
-							class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-primary"
-						>
-							Tooling
-						</h2>
+						<h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Tooling</h2>
 						<p
 							class="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 						>
-							These are the frameworks I am proficient in.
+							I am proficient in these frameworks
 						</p>
 					</div>
 				</div>

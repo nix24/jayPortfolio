@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { Github, Linkedin, Instagram, AtSign } from 'lucide-svelte';
-	import guy from '$lib/static/guy_placeholder.webp';
+	import jSelfie1 from '$lib/static/jaySelfie1.webp';
 	import { mode } from 'mode-watcher';
 
 	$: isDarkMode = $mode === 'dark';
@@ -47,7 +47,12 @@
 				A developer that wants to share his passions with the world
 			</h1>
 		</div>
-		<img class="h-48 w-48 rounded-full" src={guy} alt="guy" />
+		<img
+			class="h-80 w-64 rounded-full"
+			src={jSelfie1}
+			alt="guy"
+			in:fade={{ delay: 500, duration: 1000 }}
+		/>
 	</div>
 	<p class="gradient-text text-4xl font-bold" in:scale={{ start: 0.5, delay: 700, duration: 500 }}>
 		Jaylon Carrington
