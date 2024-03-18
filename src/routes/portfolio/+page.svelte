@@ -5,34 +5,58 @@
 	import { CardContent, CardFooter, Card } from '$lib/components/ui/card';
 	import { SearchIcon } from 'lucide-svelte';
 	import { derived, writable } from 'svelte/store';
+	import sortingVisualizer2 from '$lib/static//portfolioImgs/sortingVisualizer2.png';
+	import melodyCat from '$lib/static/portfolioImgs/melodyCat.png';
+	import pokeUI from '$lib/static/portfolioImgs/pokeUI.png';
+	interface Projects {
+		title: string;
+		img: string;
+		description: string;
+		tags: string[];
+		githubLink: string;
+	}
 
 	//creating a store for search query
 	const searchQuery = writable('');
 
 	const selectedTags = writable(new Set<string>(['All']));
-	const tags = ['All', 'TypeScript', 'Python', 'Rust', 'C++', 'Java'];
-	const projects = [
+	const tags = [
+		'All',
+		'TypeScript',
+		'Javascript',
+		'Bot',
+		'API',
+		'Music',
+		'Python',
+		'Rust',
+		'C++',
+		'Java'
+	];
+	const projects: Projects[] = [
 		{
-			title: 'Project C',
-			img: 'https://placehold.co/600x400',
-			description: 'A data analysis tool',
-			tags: ['C++'],
-			githubLink: 'https://github.com/project-c'
+			title: 'Sorting Visualizer 2,0',
+			img: sortingVisualizer2,
+			description:
+				'A sorting algorithm visualizer that shows how the algorithm works as well as speed comparisons',
+			tags: ['TypeScript', 'SvelteKit'],
+			githubLink: 'https://github.com/nix24/sortingVisualizer'
 		},
 		{
-			title: 'Project C',
-			img: 'https://placehold.co/600x400',
-			description: 'A data analysis tool',
-			tags: ['C++'],
-			githubLink: 'https://github.com/project-c'
+			title: 'Melody Cat',
+			img: melodyCat,
+			description: 'Discord bot that can play songs from Spotify and Youtube',
+			tags: ['Javascript', 'Bot', 'Music'],
+			githubLink: 'https://github.com/nix24/MelodyCat'
 		},
 		{
-			title: 'Project C',
-			img: 'https://placehold.co/600x400',
-			description: 'A data analysis tool',
-			tags: ['C++'],
-			githubLink: 'https://github.com/project-c'
+			title: 'Poke UI',
+			img: pokeUI,
+			description:
+				'PokeAPI based UI that allows you to search for pokemons and their stats/Abilities',
+			tags: ['TypeScript', 'API'],
+			githubLink: 'https://github.com/nix24/pokedex-skeletonui'
 		}
+
 		// Add more projects here
 	];
 
@@ -92,7 +116,7 @@
 		<hr class="mb-6" />
 		<div class=" grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 			{#each $filteredProjects as projects}
-				<Card class="w-80 lg:w-full">
+				<Card class="w-80 space-y-3 lg:w-full">
 					<img
 						alt="Project C"
 						class="h-48 w-full rounded-t-lg object-cover"
@@ -102,17 +126,19 @@
 						width="200"
 					/>
 					<CardContent>
-						<h3 class="text-lg font-semibold">Project C</h3>
-						<p class="text-sm text-muted-foreground">A data analysis tool</p>
+						<h3 class="text-lg font-semibold">{projects.title}</h3>
+						<p class="text-sm text-muted-foreground">{projects.description}</p>
 					</CardContent>
-					<CardFooter class="flex justify-between">
+					<CardFooter class="flex flex-wrap justify-evenly">
 						<!-- badges  -->
 						{#each projects.tags as tag}
 							<Badge class="mr-2" variant="default">{tag}</Badge>
 						{/each}
-						<Button class="text-xs" variant="outline" href={projects.githubLink} target="_blank"
-							>View on Github</Button
-						>
+						<div class="flex flex-wrap items-center p-5">
+							<Button class="text-xs" variant="outline" href={projects.githubLink} target="_blank"
+								>View on Github</Button
+							>
+						</div>
 					</CardFooter>
 				</Card>
 			{/each}
