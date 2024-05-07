@@ -8,6 +8,7 @@
 	import sortingVisualizer2 from '$lib/static//portfolioImgs/sortingVisualizer2.png';
 	import melodyCat from '$lib/static/portfolioImgs/melodyCat.png';
 	import pokeUI from '$lib/static/portfolioImgs/pokeUI.png';
+	import audioVisualizer2 from '$lib/static/portfolioImgs/audioVisualizerv2.png';
 	interface Projects {
 		title: string;
 		img: string;
@@ -20,25 +21,14 @@
 	const searchQuery = writable('');
 
 	const selectedTags = writable(new Set<string>(['All']));
-	const tags = [
-		'All',
-		'TypeScript',
-		'Javascript',
-		'Bot',
-		'API',
-		'Music',
-		'Python',
-		'Rust',
-		'C++',
-		'Java'
-	];
+	const tags = ['All', 'Javascript', 'Bot', 'API', 'Music', 'Python', 'Rust', 'C++', 'Java'];
 	const projects: Projects[] = [
 		{
 			title: 'Sorting Visualizer 2,0',
 			img: sortingVisualizer2,
 			description:
 				'A sorting algorithm visualizer that shows how the algorithm works as well as speed comparisons',
-			tags: ['TypeScript', 'SvelteKit'],
+			tags: ['Javascript'],
 			githubLink: 'https://github.com/nix24/sortingVisualizer'
 		},
 		{
@@ -55,6 +45,14 @@
 				'PokeAPI based UI that allows you to search for pokemons and their stats/Abilities',
 			tags: ['TypeScript', 'API'],
 			githubLink: 'https://github.com/nix24/pokedex-skeletonui'
+		},
+		{
+			title: 'Audio Visualizer 2.0',
+			img: audioVisualizer2,
+			description:
+				'audio visualizer that dynamically colors bars and visualize audio from mp3 and youtube videos',
+			tags: ['Javascript', 'Music'],
+			githubLink: 'https://github.com/nix24/audioVisualizerv2'
 		}
 
 		// Add more projects here

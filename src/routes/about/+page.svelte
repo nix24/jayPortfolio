@@ -5,8 +5,8 @@
 	import python from '$lib/static/python.svg';
 	import rust from '$lib/static/rust.svg';
 
-	import nextjs from '$lib/static/next-js.svg';
-	import sveltekit from '$lib/static/svelte-logo.svg';
+	import Git from '$lib/static/Git.svg';
+	import Github from '$lib/static/github.svg';
 
 	import mongodb from '$lib/static/mongodb.svg';
 	import mysql from '$lib/static/mysql.svg';
@@ -26,7 +26,7 @@
 	});
 
 	// using badges to list out, Adaptable, problem-Solver, Strong-Fundementals, Team-Leader, Efficient, Fast-Learner
-	let skills = [
+	const skills = [
 		'Adaptable',
 		'Problem-Solver',
 		'Strong-Fundamentals',
@@ -35,24 +35,24 @@
 		'Fast-Learner'
 	];
 
-	let languages = [
+	const languages = [
 		{ name: 'Typescript', icon: typescript, level: 5 },
+		{ name: 'Rust', icon: rust, level: 4 },
 		{ name: 'Java', icon: java, level: 4 },
-		{ name: 'Python', icon: python, level: 4 },
-		{ name: 'C++', icon: c, level: 3 },
-		{ name: 'Rust', icon: rust, level: 3 }
+		{ name: 'Python', icon: python, level: 3 },
+		{ name: 'C++', icon: c, level: 3 }
 	];
 
-	let tooling = [
+	const tooling = [
 		{
-			name: 'NextJs',
-			description: 'The React framework for web and native user interfaces.',
-			icon: nextjs
+			name: 'Git',
+			description: 'A distributed version control system.',
+			icon: Git
 		},
 		{
-			name: 'SvelteKit',
-			description: 'Web development, streamlined.',
-			icon: sveltekit
+			name: 'Github',
+			description: 'A web-based platform for version control using Git.',
+			icon: Github
 		},
 		{
 			name: 'MongoDB',
@@ -63,6 +63,12 @@
 			name: 'MySQL',
 			description: 'An open-source relational database management system.',
 			icon: mysql
+		},
+		{
+			name: 'AWS',
+			description:
+				'A secure cloud services platform, offering computing power, database storage, content delivery and other functionality to help businesses scale and grow.',
+			icon: 'https://img.icons8.com/color/452/amazon-web-services.png'
 		}
 	];
 
@@ -74,12 +80,26 @@
 		<div class="grid grid-cols-1 md:grid-cols-12">
 			<div class="p-6 md:col-span-7">
 				<h1 class="mb-4 text-6xl font-bold">So who am I anyways?</h1>
+				<section class="flex flex-col space-y-4">
+					<p>
+						I am a recent graduate from the University of North Carolina at Charlotte, where I
+						earned my degree in Computer Science. Throughout my academic journey, I have developed a
+						strong passion for software engineering, with a particular focus on backend development.
+					</p>
+					<p>
+						My coursework and hands-on experience have equipped me with a solid foundation in
+						working with and creating HTTP servers, working with noSql and Sql databases and a deep
+						understanding of data-structures.
+					</p>
+					<p>
+						I have also had the opportunity to work on frontend projects. As I embark on my
+						professional career, I am excited to contribute my skills and knowledge to a dynamic and
+						innovative software engineering team. I am currently seeking opportunities that will
+						allow me to further develop my expertise in backend technologies while collaborating to
+						create robust and efficient software solutions.
+					</p>
+				</section>
 
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia obcaecati vitae est eos
-					quam corporis harum molestiae laudantium! Debitis, beatae? Sint eius vitae minima!
-					Reiciendis aliquid in ab facilis corrupti?
-				</p>
 				<hr class="mx-20 my-6 border-2" />
 
 				<section class="mb-5">
