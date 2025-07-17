@@ -1,0 +1,248 @@
+/* ===== COSMIC THEME SHARED STYLES ===== */
+/* Following clean code principles: DRY, modular, self-documenting */
+/* Optimized for performance with GPU acceleration and reduced repaints */
+
+/* Global Settings */
+:global(html) {
+	scroll-behavior: smooth;
+	/* Improve font rendering performance */
+	text-rendering: optimizeSpeed;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Performance optimization for all elements */
+:global(*) {
+	/* Enable GPU acceleration for smoother animations */
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	/* Reduce repaints by promoting elements to composite layers */
+	will-change: auto;
+}
+
+/* ===== COLOR PALETTE ===== */
+:root {
+	/* Primary cosmic colors */
+	--cosmic-purple: #a855f7;
+	--cosmic-pink: #ec4899;
+	--cosmic-blue: #3b82f6;
+	--cosmic-amber: #f59e0b;
+
+	/* Background gradients */
+	--cosmic-bg: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 50%, #2d1b69 100%);
+	--cosmic-glass: rgba(15, 15, 35, 0.8);
+
+	/* Opacity levels */
+	--cosmic-opacity-low: 0.1;
+	--cosmic-opacity-med: 0.3;
+	--cosmic-opacity-high: 0.8;
+
+	/* Optimized transitions */
+	--cosmic-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	--cosmic-transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+	/* Shadows and glows */
+	--cosmic-glow-purple: 0 0 20px rgba(168, 85, 247, 0.4);
+	--cosmic-glow-pink: 0 0 20px rgba(236, 72, 153, 0.4);
+	--cosmic-text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+/* ===== BASE COSMIC CONTAINER ===== */
+.cosmic-container {
+	background: var(--cosmic-bg);
+	position: relative;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	min-height: 100vh;
+	/* Performance: Use GPU for background */
+	transform: translateZ(0);
+	/* Optimize scrolling */
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior: contain;
+}
+
+/* ===== COSMIC BACKGROUND SYSTEM ===== */
+.cosmic-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	overflow: hidden;
+	pointer-events: none;
+	/* Performance: Promote to composite layer */
+	will-change: transform;
+	contain: layout style paint;
+}
+
+/* Optimized Nebula Layers */
+.nebula-layer {
+	position: absolute;
+	width: 120%;
+	height: 120%;
+	border-radius: 50%;
+	filter: blur(100px);
+	opacity: var(--cosmic-opacity-med);
+	animation: cosmic-float 20s ease-in-out infinite;
+	/* Performance: Use transform instead of changing position */
+	will-change: transform;
+	contain: layout style paint;
+}
+
+.nebula-purple {
+	background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%);
+	top: -10%;
+	left: -10%;
+	animation-delay: 0s;
+}
+
+.nebula-pink {
+	background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+	top: 30%;
+	right: -20%;
+	animation-delay: -7s;
+}
+
+.nebula-blue {
+	background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+	bottom: -10%;
+	left: 20%;
+	animation-delay: -14s;
+}
+
+/* Optimized Stars System */
+.stars-layer {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	contain: layout style paint;
+}
+
+.cosmic-star {
+	position: absolute;
+	background: white;
+	border-radius: 50%;
+	animation: cosmic-twinkle 3s ease-in-out infinite;
+	animation-delay: var(--delay);
+	left: var(--x);
+	top: var(--y);
+	/* Performance optimization */
+	will-change: opacity;
+	contain: layout style;
+}
+
+.star-1 {
+	width: 2px;
+	height: 2px;
+	box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.star-2 {
+	width: 1.5px;
+	height: 1.5px;
+	box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+.star-3 {
+	width: 1px;
+	height: 1px;
+	box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* ===== OPTIMIZED ANIMATIONS ===== */
+/* Use transform and opacity only for best performance */
+@keyframes cosmic-float {
+	0%,
+	100% {
+		transform: translate(0, 0) rotate(0deg) scale(1);
+	}
+	25% {
+		transform: translate(10px, -15px) rotate(1deg) scale(1.02);
+	}
+	50% {
+		transform: translate(-5px, 10px) rotate(-0.5deg) scale(0.98);
+	}
+	75% {
+		transform: translate(15px, 5px) rotate(0.8deg) scale(1.01);
+	}
+}
+
+@keyframes cosmic-twinkle {
+	0%,
+	100% {
+		opacity: 0.3;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+}
+
+@keyframes cosmic-gradient-shift {
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+}
+
+/* ===== PERFORMANCE UTILITIES ===== */
+/* Use these classes for optimal animations */
+.gpu-accelerated {
+	transform: translateZ(0);
+	will-change: transform;
+}
+
+.smooth-transition {
+	transition: var(--cosmic-transition);
+}
+
+.glass-effect {
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+}
+
+/* ===== ACCESSIBILITY & PERFORMANCE ===== */
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--cosmic-transition: none;
+		--cosmic-transition-slow: none;
+	}
+
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.nebula-layer,
+	.cosmic-star {
+		animation: none;
+	}
+}
+
+/* Performance optimizations for different screen sizes */
+@media (max-width: 768px) {
+	.nebula-layer {
+		/* Reduce blur on mobile for better performance */
+		filter: blur(60px);
+	}
+
+	.cosmic-star {
+		/* Reduce star count effects on mobile */
+		animation-duration: 4s;
+	}
+}
+
+/* High DPI optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.cosmic-star {
+		/* Sharper stars on high DPI displays */
+		box-shadow: 0 0 2px rgba(255, 255, 255, 0.9);
+	}
+}
